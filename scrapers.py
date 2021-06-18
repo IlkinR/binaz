@@ -10,9 +10,10 @@ def get_soup(url):
 
 
 class ProductScraper:
+    ADVERT_BASE_URL = 'https://bina.az'
+
     def __init__(self, product_url):
-        self.url = product_url
-        self.soup = get_soup(self.url)
+        self.soup = get_soup(product_url)
 
     def get_price(self):
         price_tag = self.soup.find('span', class_='price-val')
@@ -36,6 +37,14 @@ class ProductScraper:
             props[prop_label] = prop_value
 
         return props
+
+    def get_similar_adverts(self):
+        advert_tags = self.soup.select('a.item_link')
+
+        return [
+            self.ADVERT_BASE_URL + tag.get('href')
+            for tag in advert_tags
+        ]
 
     def get_locations(self):
         location_tags = self.soup.select('ul.locations > li')

@@ -10,6 +10,7 @@ def collect_product_data(product_url):
     product_dataset['price'] = product_scraper.get_price()
     product_dataset['ownership'] = product_scraper.get_ownership()
     product_dataset['location'] = product_scraper.get_locations()
+    product_dataset['similars'] = product_scraper.get_similar_adverts()
 
     product_dataset['advert'] = advert_scraper.scrape_data()
 
