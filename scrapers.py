@@ -20,8 +20,7 @@ class ProductScraper:
 
     def get_ownership(self):
         owner_tag = self.soup.select('div.name > span')
-        owner_data = [tag.text for tag in owner_tag]
-        return owner_data
+        return [tag.text for tag in owner_tag]
 
     def get_title(self):
         title_tag = self.soup.select('div.services-container > h1')[0]
@@ -40,8 +39,7 @@ class ProductScraper:
 
     def get_locations(self):
         location_tags = self.soup.select('ul.locations > li')
-        locations = [loc_tag.text for loc_tag in location_tags]
-        return locations
+        return [loc_tag.text for loc_tag in location_tags]
 
 
 class AdvertScraper:
@@ -65,4 +63,3 @@ class AdvertScraper:
             dataset['today'] = date.today().strftime("%d/%m/%Y")
 
         return dataset
-

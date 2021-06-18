@@ -14,3 +14,9 @@ def collect_product_data(product_url):
     product_dataset['advert'] = advert_scraper.scrape_data()
 
     return product_dataset
+
+
+def collect_advert_data(product_url):
+    advert_scraper = AdvertScraper(product_url)
+    advert_data = advert_scraper.scrape_data()
+    return advert_data
